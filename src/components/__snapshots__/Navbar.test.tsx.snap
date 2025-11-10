@@ -1,0 +1,105 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Navbar componenet snapshot  1`] = `
+<div>
+  <header
+    class="fixed top-0 left-0 right-0 bg-white shadow-md z-50"
+  >
+    <div
+      class="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8"
+    >
+      <div
+        class="flex h-16 items-center justify-between"
+      >
+        <div
+          class="flex-1 md:flex md:items-center md:gap-12"
+        >
+          <a
+            class="block text-blue-600"
+            href="/"
+          >
+            <span
+              class="sr-only"
+            >
+              Home
+            </span>
+            <span
+              class="text-2xl font-bold"
+            >
+              AE Service
+            </span>
+          </a>
+        </div>
+        <div
+          class="md:flex md:items-center md:gap-12"
+        >
+          <nav
+            aria-label="Global"
+            class="hidden md:block"
+          >
+            <ul
+              class="flex items-center gap-6 text-sm"
+            >
+              <li>
+                <a
+                  class="text-gray-500 transition hover:text-gray-500/75"
+                  href="#servizi"
+                >
+                  Servizi
+                </a>
+              </li>
+              <li>
+                <a
+                  class="text-gray-500 transition hover:text-gray-500/75"
+                  href="#about"
+                >
+                  Chi Siamo
+                </a>
+              </li>
+              <li>
+                <a
+                  class="text-gray-500 transition hover:text-gray-500/75"
+                  href="#contact"
+                >
+                  Contatti
+                </a>
+              </li>
+            </ul>
+          </nav>
+          <div
+            class="flex items-center gap-4"
+          >
+            <div
+              class="block md:hidden"
+            >
+              <button
+                class="rounded bg-gray-100 p-2 text-gray-600 transition hover:text-gray-600/75"
+              >
+                <span
+                  class="sr-only"
+                >
+                  Toggle menu
+                </span>
+                <svg
+                  class="h-5 w-5"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M4 6h16M4 12h16M4 18h16"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+</div>
+`;
