@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence, Variants, HTMLMotionProps } from "framer-motion";
 import Link from "next/link";
+import { Phone, Mail, User, Building2, Sparkles, Pencil, Home, Briefcase, HelpCircle } from 'lucide-react';
 
 type FormSteps = 'type' | 'companyName' | 'name' | 'contactMethod' | 'email' | 'phone' | 'service' | 'submit';
 
@@ -36,16 +37,6 @@ const itemVariants: Variants = {
   hidden: { opacity: 0 },
   visible: { opacity: 1 }
 };
-
-// --- ICONE SVG ---
-const Icons = {
-  User: <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-8 h-8"><path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" /></svg>,
-  Building: <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-8 h-8"><path strokeLinecap="round" strokeLinejoin="round" d="M3.75 21h16.5M4.5 3h15M5.25 3v18m13.5-18v18M9 6.75h1.5m-1.5 3h1.5m-1.5 3h1.5m3-6H13.5m0 3H13.5m0 3H13.5M6.75 21v-3.75H9V21m3.75-3.75h3.75V21" /></svg>,
-  Envelope: <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-8 h-8"><path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" /></svg>,
-  Phone: <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-8 h-8"><path strokeLinecap="round" strokeLinejoin="round" d="M10.5 1.5H8.25A2.25 2.25 0 0 0 6 3.75v16.5a2.25 2.25 0 0 0 2.25 2.25h7.5A2.25 2.25 0 0 0 18 20.25V3.75a2.25 2.25 0 0 0-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3" /></svg>,
-  Service: <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6"><path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456ZM16.894 20.567 16.5 21.75l-.394-1.183a2.25 2.25 0 0 0-1.636-1.636L13.25 18.5l1.183-.394a2.25 2.25 0 0 0 1.636-1.636l.394-1.183.394 1.183a2.25 2.25 0 0 0 1.636 1.636l1.183.394-1.183.394a2.25 2.25 0 0 0-1.636 1.636Z" /></svg>,
-  Pencil: <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4"><path strokeLinecap="round" strokeLinejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L6.832 19.82a4.5 4.5 0 0 1-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 0 1 1.13-1.897L16.863 4.487Zm0 0L19.5 7.125" /></svg>
-}
 
 const ContactForm: React.FC = () => {
   const [step, setStep] = useState<FormSteps>('type');
@@ -272,8 +263,8 @@ const ContactForm: React.FC = () => {
               >
                 <QuestionTitle>Per iniziare, sei un...</QuestionTitle>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 mt-4">
-                  <SelectionCard icon={Icons.User} title="Privato" onClick={() => handleTypeSelect('privateer')} />
-                  <SelectionCard icon={Icons.Building} title="Azienda / Condominio" onClick={() => handleTypeSelect('company')} />
+                  <SelectionCard icon={<Home className="w-8 h-8" />} title="Privato" onClick={() => handleTypeSelect('privateer')} />
+                  <SelectionCard icon={<Building2 className="w-8 h-8" />} title="Azienda / Condominio" onClick={() => handleTypeSelect('company')} />
                 </div>
               </motion.div>
             )}
@@ -319,8 +310,8 @@ const ContactForm: React.FC = () => {
               <motion.div key="step-method" variants={containerVariants} initial="hidden" animate="visible" exit="exit">
                 <QuestionTitle>Dove preferisci ricevere il preventivo?</QuestionTitle>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 mt-4">
-                  <SelectionCard icon={Icons.Envelope} title="Via Email" onClick={() => handleMethodSelect('email')} />
-                  <SelectionCard icon={Icons.Phone} title="Al Telefono" onClick={() => handleMethodSelect('phone')} />
+                  <SelectionCard icon={<Mail className="w-8 h-8" />} title="Via Email" onClick={() => handleMethodSelect('email')} />
+                  <SelectionCard icon={<Phone className="w-8 h-8" />} title="Al Telefono" onClick={() => handleMethodSelect('phone')} />
                 </div>
               </motion.div>
             )}
@@ -364,14 +355,31 @@ const ContactForm: React.FC = () => {
               <motion.div key="step-service" variants={containerVariants} initial="hidden" animate="visible" exit="exit">
                 <QuestionTitle>Infine, a quale servizio sei interessato?</QuestionTitle>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
-                  {['Pulizie Condominiali', 'Pulizie Uffici', 'Pulizie di Fondo', 'Altro'].map((srv) => (
-                    <SelectionCard
-                      key={srv}
-                      icon={Icons.Service}
-                      title={srv}
-                      onClick={() => handleServiceSelect(srv)}
-                    />
-                  ))}
+                  {['Pulizie Condominiali', 'Pulizie Uffici', 'Pulizie di Fondo', 'Altro'].map((srv) => {
+                    let serviceIcon;
+                    switch (srv) {
+                      case 'Pulizie Condominiali':
+                        serviceIcon = <Building2 className="w-8 h-8" />;
+                        break;
+                      case 'Pulizie Uffici':
+                        serviceIcon = <Briefcase className="w-8 h-8" />;
+                        break;
+                      case 'Pulizie di Fondo':
+                        serviceIcon = <Sparkles className="w-8 h-8" />;
+                        break;
+                      default:
+                        serviceIcon = <HelpCircle className="w-8 h-8" />;
+                        break;
+                    }
+                    return (
+                      <SelectionCard
+                        key={srv}
+                        icon={serviceIcon}
+                        title={srv}
+                        onClick={() => handleServiceSelect(srv)}
+                      />
+                    );
+                  })}
                 </div>
               </motion.div>
             )}
