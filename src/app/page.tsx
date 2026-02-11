@@ -1,5 +1,5 @@
-import About from "@/components/About";
-import Contact from "@/components/Contact";
+import AboutTeaser from "@/components/AboutTeaser";
+import CtaSection from "@/components/CtaSection";
 import Hero from "@/components/Hero";
 import Navbar from "@/components/Navbar";
 import Services from "@/components/Services";
@@ -10,8 +10,8 @@ export default function Home() {
       <Navbar />
       <Hero />
       <Services />
-      <About />
-      <Contact />
+      <AboutTeaser />
+      <CtaSection />
     </>
   );
 }
