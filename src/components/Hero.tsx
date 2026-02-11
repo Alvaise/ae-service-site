@@ -72,7 +72,7 @@ const Hero = () => {
                   </div>
                 ))}
               </div>
-              <p>La scelta di fiducia di <span className="text-gray-900 font-bold underline decoration-blue-300 decoration-2">50+ famiglie</span> nel Canavese.</p>
+              <p>La scelta di fiducia di <span className="text-gray-900 font-bold underline decoration-blue-300 decoration-2">50+ aziende</span> nel Canavese e nella provincia di Torino.</p>
             </div>
 
           </motion.div>

@@ -5,7 +5,7 @@ import CtaSection from "@/components/CtaSection"; // Riutilizziamo la CTA in fon
 
 export default function AboutPage() {
   return (
-    <main>
+    <main className="bg-white">
       <Navbar />
       <div className="pt-20"> {/* Padding per compensare la navbar fissa */}
         <About />
