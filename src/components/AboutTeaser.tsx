@@ -23,7 +23,7 @@ const AboutTeaser = () => {
             {/* Foto ritagliata o diversa dalla Hero */}
             <div className="relative z-10 rounded-3xl overflow-hidden border-4 border-white shadow-xl">
               <Image
-                src="/team.jpg" // Puoi usare la stessa o un dettaglio
+                src="/team_real.png" // Puoi usare la stessa o un dettaglio
                 alt="Elena e Marco di AE Service"
                 width={600}
                 height={400}

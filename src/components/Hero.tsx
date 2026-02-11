@@ -93,7 +93,7 @@ const Hero = () => {
             <div className="relative z-10 group">
               <div className="rounded-[2.5rem] overflow-hidden shadow-2xl border-4 border-white transform transition-transform duration-500 hover:scale-[1.01]">
                 <Image
-                  src="/team.jpg"
+                  src="/team_real.png"
                   alt="Il team di AE Service al completo"
                   width={800}
                   height={600}
@@ -107,7 +107,7 @@ const Hero = () => {
                 <div className="flex items-center gap-3">
                   <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
                   <p className="text-sm font-medium text-gray-600">
-                    <span className="font-bold text-gray-900">Elena e il Team</span> sono pronti ad aiutarti!
+                    <span className="font-bold text-gray-900">Siamo</span> pronti ad aiutarti!
                   </p>
                 </div>
               </div>

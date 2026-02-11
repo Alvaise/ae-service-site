@@ -1,4 +1,8 @@
+'use client';
+
 import React from 'react';
+import { motion } from 'framer-motion';
+import { Building2, Store, Sparkles } from 'lucide-react';
 
 // Dati dei servizi aggiornati con le "features" (punti elenco)
 const services = [
@@ -6,13 +10,9 @@ const services = [
     title: 'Pulizie Condominiali',
     description: 'Offriamo un servizio puntuale per la pulizia delle scale e delle aree comuni. Il biglietto da visita del tuo palazzo, sempre in ordine.',
     features: ['Pulizia scale e pianerottoli', 'Igienizzazione corrimano e ascensori', 'Lavaggio vetrate ingresso', 'Gestione rotazione sacchi'],
-    icon: (
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-10 h-10 text-white">
-        <path d="M3 21h18M5 21V7l8-4 8 4v14M8 21v-4h8v4M12 11v2m-2-1h4" />
-      </svg>
-    ),
+    icon: <Building2 strokeWidth={2.25} className="w-10 h-10 text-white" />,
     color: 'bg-blue-600',
-    shadow: 'shadow-blue-200',
+    shadow: 'shadow-blue-500/20',
     text: 'text-blue-700',
     bullet: 'bg-blue-100 text-blue-700'
   },
@@ -20,33 +20,46 @@ const services = [
     title: 'Pulizie Commerciali',
     description: 'Manteniamo il tuo ufficio o negozio pulito e accogliente. Un ambiente di lavoro sano migliora la produttività e l\'immagine aziendale.',
     features: ['Spolveratura scrivanie e arredi', 'Sanificazione servizi igienici', 'Lavaggio pavimenti tecnici', 'Svuotamento cestini'],
-    icon: (
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-10 h-10 text-white">
-        <path d="M2 22h20M4 22V6a2 2 0 012-2h12a2 2 0 012 2v16M12 4V2m-8 8h16m-16 4h16" />
-      </svg>
-    ),
-    color: 'bg-teal-600',
-    shadow: 'shadow-teal-200',
-    text: 'text-teal-700',
-    bullet: 'bg-teal-100 text-teal-700'
+    icon: <Store strokeWidth={2.25} className="w-10 h-10 text-white" />,
+    color: 'bg-sky-500',
+    shadow: 'shadow-sky-500/20',
+    text: 'text-sky-700',
+    bullet: 'bg-sky-100 text-sky-700'
   },
   {
     title: 'Pulizie di Fondo',
     description: 'La soluzione perfetta per le pulizie di primavera o post-ristrutturazione. Un intervento profondo che ridà vita ai tuoi spazi.',
     features: ['Rimozione residui di cantiere', 'Deceratura e trattamento pavimenti', 'Lavaggio profondo vetrate', 'Igienizzazione a vapore'],
-    icon: (
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-10 h-10 text-white">
-        <path d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456" />
-      </svg>
-    ),
-    color: 'bg-indigo-600',
-    shadow: 'shadow-indigo-200',
-    text: 'text-indigo-700',
-    bullet: 'bg-indigo-100 text-indigo-700'
+    icon: <Sparkles strokeWidth={2.25} className="w-10 h-10 text-white" />,
+    color: 'bg-slate-700',
+    shadow: 'shadow-slate-700/20',
+    text: 'text-slate-800',
+    bullet: 'bg-slate-100 text-slate-800'
   },
 ];
 
 const Services = () => {
+  const pathRef = React.useRef<SVGPathElement>(null);
+  const [pathLength, setPathLength] = React.useState(0);
+
+  React.useEffect(() => {
+    if (pathRef.current) {
+      setPathLength(pathRef.current.getTotalLength());
+    }
+  }, []);
+
+  const draw = {
+    hidden: { strokeDashoffset: pathLength, strokeDasharray: pathLength },
+    visible: {
+      strokeDashoffset: 0,
+      opacity: 1,
+      transition: {
+        delay: 0.5,
+        duration: 2,
+        ease: "easeInOut"
+      }
+    }
+  };
   return (
     <section id="services" className="bg-gray-50 py-24 sm:py-32 overflow-hidden relative">
       <div className="mx-auto max-w-screen-xl px-6 lg:px-8 relative">
@@ -70,38 +83,55 @@ const Services = () => {
           >
             <defs>
               <linearGradient id="waveGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                <stop offset="0%" stopColor="#2563EB" stopOpacity="0.3" />
-                <stop offset="50%" stopColor="#0D9488" stopOpacity="0.3" />
-                <stop offset="100%" stopColor="#4F46E5" stopOpacity="0.3" />
+                <stop offset="0%" stopColor="#3B82F6" stopOpacity="0.3" /> {/* Blue */}
+                <stop offset="50%" stopColor="#0EA5E9" stopOpacity="0.3" /> {/* Sky */}
+                <stop offset="100%" stopColor="#475569" stopOpacity="0.3" /> {/* Slate */}
               </linearGradient>
             </defs>
 
-            <path
+            <motion.path
+              ref={pathRef}
               d="M 75 0 C 75 25, 25 25, 25 50 C 25 75, 75 75, 75 100"
               stroke="url(#waveGradient)"
-
-              /* --- MODIFICA QUI: Spessore aumentato a 6 --- */
               strokeWidth="6"
-
               vectorEffect="non-scaling-stroke"
               fill="none"
-              strokeDasharray="10 10" /* Aumentato anche il tratteggio per proporzione */
-              strokeLinecap="round"   /* Arrotonda le punte dei trattini */
+              strokeLinecap="round"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.8 }}
+              variants={draw}
             />
           </svg>
         </div>
 
         {/* --- LINEA DRITTA (Solo Mobile) --- */}
-        <div className="md:hidden absolute left-8 top-[180px] bottom-20 w-2 -translate-x-1/2 bg-gradient-to-b from-blue-200 via-teal-200 to-indigo-200 z-0 rounded-full"></div>
+        <motion.div
+          className="md:hidden absolute left-8 top-[180px] bottom-20 w-2 -translate-x-1/2 bg-gradient-to-b from-blue-200 via-sky-200 to-slate-200 z-0 rounded-full"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true, amount: 0.8 }}
+          transition={{ delay: 0.5, duration: 1 }}
+        ></motion.div>
 
         {/* Contenitore Cards */}
         <div className="flex flex-col gap-20 relative z-10">
           {services.map((service, index) => {
             const isEven = index % 2 === 0;
+
+            const cardVariants = {
+              hidden: { opacity: 0, x: isEven ? -100 : 100 },
+              visible: { opacity: 1, x: 0, transition: { duration: 0.6, ease: "easeOut" } },
+            };
+
             return (
-              <div
+              <motion.div
                 key={service.title}
                 className={`flex flex-col md:flex-row items-center gap-8 md:gap-16 ${!isEven ? 'md:flex-row-reverse' : ''}`}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.3 }}
+                variants={cardVariants}
               >
 
                 {/* --- VISUAL (ICONA) --- */}
@@ -122,7 +152,7 @@ const Services = () => {
                 <div className="flex-1 text-left pl-16 md:pl-0 w-full">
 
                   {/* NUOVO: Card bianca per il testo */}
-                  <div className={`bg-white p-8 rounded-3xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow duration-300 relative overflow-hidden group`}>
+                  <div className={`bg-white p-8 rounded-3xl shadow-sm border border-blue-50 hover:shadow-md transition-shadow duration-300 relative overflow-hidden group`}>
 
                     {/* Decorazione colorata in alto alla card */}
                     <div className={`absolute top-0 left-0 w-2 h-full ${service.color} opacity-0 group-hover:opacity-100 transition-opacity`}></div>
@@ -157,14 +187,13 @@ const Services = () => {
 
                   </div>
                 </div>
-
-              </div>
+              </motion.div>
             );
           })}
         </div>
 
       </div>
-    </section>
+    </section >
   );
 };
 

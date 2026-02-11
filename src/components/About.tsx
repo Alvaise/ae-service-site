@@ -33,7 +33,7 @@ const About = () =>
         <div className="flex items-center justify-center">
           <Image
             alt="Il team di AE Service al lavoro" // Test looks for this
-            src="/team.jpg"
+            src="/group.png"
             width={1024}
             height={1024}
             className="w-full max-w-lg h-auto rounded-lg object-cover shadow-xl"
@@ -41,32 +41,6 @@ const About = () =>
         </div>
       </div>
 
-      {/* --- Section 2: The "Il Nostro Team" Gallery (Title + 5 Headshots) --- */}
-      <div className="mx-auto max-w-2xl text-center mt-32">
-        <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-          Il Nostro Team
-        </h2>
-        <p className="mt-6 text-lg leading-8 text-gray-600">
-          I volti dietro la fiducia. Mettiamo la nostra esperienza al tuo servizio.
-        </p>
-      </div>
-
-      <ul className="mx-auto mt-20 grid max-w-2xl grid-cols-2 gap-x-8 gap-y-16 text-center sm:grid-cols-3 md:grid-cols-4 lg:mx-0 lg:max-w-none lg:grid-cols-5">
-        {team.map((person) => (
-          <li key={person.name}>
-            <Image
-              className="mx-auto h-24 w-24 rounded-full object-cover shadow-lg"
-              src={person.image}
-              alt={`Ritratto di ${person.name}`} width={256}
-              height={256}
-            />
-            <h3 className="mt-6 text-base font-semibold leading-7 tracking-tight text-gray-900">
-              {person.name}
-            </h3>
-            <p className="text-sm leading-6 text-gray-600">{person.role}</p>
-          </li>
-        ))}
-      </ul>
 
     </div>
   </section>)
