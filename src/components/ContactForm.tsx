@@ -2,15 +2,15 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence, Variants, HTMLMotionProps } from "framer-motion";
 import Link from "next/link";
-import { Phone, Mail, User, Building2, Sparkles, Pencil, Home, Briefcase, HelpCircle } from 'lucide-react';
+import { Phone, Mail, Building2, Sparkles, Home, Briefcase, HelpCircle, Pencil } from 'lucide-react';
 
 type FormSteps = 'type' | 'companyName' | 'name' | 'contactMethod' | 'email' | 'phone' | 'service' | 'submit';
 
-interface FormState {
+export interface FormState {
   name?: string;
   companyName?: string;
   email?: string;
-  type?: 'company' | 'privateer';
+  client_type?: 'company' | 'privateer';
   phone_number?: string;
   message?: string;
   service?: string;
@@ -224,7 +224,7 @@ const ContactForm: React.FC = () => {
         className="text-blue-600 hover:text-blue-800 p-2 rounded-full hover:bg-blue-50 transition-colors flex items-center gap-1 text-sm font-medium"
         title={`Modifica ${label}`}
       >
-        {Icons.Pencil}
+        <Pencil className="w-4 h-4" />
         <span className="hidden sm:inline">Modifica</span>
       </button>
     </div>
@@ -291,7 +291,7 @@ const ContactForm: React.FC = () => {
               <motion.form key="step-name" variants={containerVariants} initial="hidden" animate="visible" exit="exit" onSubmit={handleNameSubmit}>
                 <label htmlFor="name">
                   <QuestionTitle>
-                    {formData.type === 'company' ? 'Qual è il nome del referente?' : 'Come ti chiami?'}
+                    {formData.client_type === 'company' ? 'Qual è il nome del referente?' : 'Come ti chiami?'}
                   </QuestionTitle>
                 </label>
                 <div className="mt-6 md:px-8">
@@ -308,7 +308,7 @@ const ContactForm: React.FC = () => {
             {/* STEP 3: METHOD */}
             {step === 'contactMethod' && (
               <motion.div key="step-method" variants={containerVariants} initial="hidden" animate="visible" exit="exit">
-                <QuestionTitle>Dove preferisci ricevere il preventivo?</QuestionTitle>
+                <QuestionTitle>Come preferisci essere ricontattato?</QuestionTitle>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 mt-4">
                   <SelectionCard icon={<Mail className="w-8 h-8" />} title="Via Email" onClick={() => handleMethodSelect('email')} />
                   <SelectionCard icon={<Phone className="w-8 h-8" />} title="Al Telefono" onClick={() => handleMethodSelect('phone')} />
@@ -410,8 +410,8 @@ const ContactForm: React.FC = () => {
 
                         <SummaryRow
                           label="Chi sei"
-                          value={formData.type === 'company' ? (formData.companyName || 'Azienda') : 'Privato'}
-                          stepToJump={formData.type === 'company' ? 'companyName' : 'type'}
+                          value={formData.client_type === 'company' ? (formData.companyName || 'Azienda') : 'Privato'}
+                          stepToJump={formData.client_type === 'company' ? 'companyName' : 'type'}
                         />
 
                         <SummaryRow
