@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion, Variants } from 'framer-motion';
 import { Building2, Store, Sparkles } from 'lucide-react';
 
 // Dati dei servizi aggiornati con le "features" (punti elenco)
@@ -38,6 +38,7 @@ const services = [
   },
 ];
 
+
 const Services = () => {
   const pathRef = React.useRef<SVGPathElement>(null);
   const [pathLength, setPathLength] = React.useState(0);
@@ -48,7 +49,8 @@ const Services = () => {
     }
   }, []);
 
-  const draw = {
+
+  const draw: Variants = {
     hidden: { strokeDashoffset: pathLength, strokeDasharray: pathLength },
     visible: {
       strokeDashoffset: 0,
@@ -119,7 +121,7 @@ const Services = () => {
           {services.map((service, index) => {
             const isEven = index % 2 === 0;
 
-            const cardVariants = {
+            const cardVariants: Variants = {
               hidden: { opacity: 0, x: isEven ? -100 : 100 },
               visible: { opacity: 1, x: 0, transition: { duration: 0.6, ease: "easeOut" } },
             };
