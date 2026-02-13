@@ -47,7 +47,7 @@ const AboutTeaser = () => {
               AE Service nasce a Chivasso con un'idea semplice: portare nelle case e negli uffici la stessa cura che metteremmo nei nostri.
             </p>
             <p className="text-lg text-gray-600 mb-8 leading-relaxed">
-              Dietro ogni preventivo e ogni intervento ci sono Elena, Marco e una squadra di professionisti che ci mettono la faccia (e il sorriso).
+              Dietro ogni preventivo e ogni intervento ci sono Giuseppe, Daniela e una squadra di professionisti che ci mettono la faccia (e il sorriso).
             </p>
 
             <Link
